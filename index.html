@@ -37,13 +37,16 @@ body { margin: 0; padding: 0; }
             const address = feature.properties.address;
             const stanza = feature.content.stanza;
             const articleImg = feature.content.articleImg;
+            const articleLink = feature.content.articleLink;
 
             const marker = new mapboxgl.Marker()
                 .setLngLat([long,lat])  
                 .setPopup(new mapboxgl.Popup().setHTML(`
                     <h1>${address}</h1>
-                    <p>${stanza}</p> 
-                    <img src="${articleImg}" alt="Article Image" style="max-width: auto; height: auto;">                
+                    <p>${stanza}</p>   
+                    <p><a href="${articleLink}" target="_blank" style="color: blue; text-decoration: underline;">Read full article</a></p>
+                    <img src="${articleImg}" alt="Article Image" style="max-width: 100%; height: auto;"></img>
+                                 
                 `))
                 .addTo(map);  
         });
