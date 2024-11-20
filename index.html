@@ -36,14 +36,16 @@ body { margin: 0; padding: 0; }
             const long = feature.properties.Longitude;
             const address = feature.properties.address;
             const stanza = feature.content.stanza;
+            const articleImg = feature.content.articleImg;
+
             const marker = new mapboxgl.Marker()
                 .setLngLat([long,lat])  
                 .setPopup(new mapboxgl.Popup().setHTML(`
                     <h1>${address}</h1>
-                    <body>${stanza}</body> 
-                    <img></img>
+                    <p>${stanza}</p> 
+                    <img src="${articleImg}" alt="Article Image" style="max-width: auto; height: auto;">                
                 `))
-                .addTo(map)  
+                .addTo(map);  
         });
     
     

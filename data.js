@@ -23,7 +23,8 @@ const data = {
                 ]
             },
             "content": {
-                "stanza": "En el condad de Carnes. \nmiren lo que ha sucedido,\nmurió el Cherife Mayor. \nquednado Roman herido"
+                "stanza": "En el condad de Carnes. \nmiren lo que ha sucedido,\nmurió el Cherife Mayor. \nquednado Roman herido",
+                "articleImg": "/Users/dianitalopez/Documents/GitHub/gregmapbox/articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.pdf"
             }
         },
         {
@@ -41,7 +42,9 @@ const data = {
                 ]
             },
             "content":{
-                "stanza":"Tiró con rumbo a Gonzales \nsin ninguna timidez:\n--Síganme rinches cobardes, \nyo soy Gregorio Cortez."
+                "stanza":"Tiró con rumbo a Gonzales \nsin ninguna timidez:\n--Síganme rinches cobardes, \nyo soy Gregorio Cortez.",
+                "articleImg": "/Users/dianitalopez/Documents/GitHub/gregmapbox/articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.pdf"
+
             }
         },
         {
@@ -60,7 +63,8 @@ const data = {
             },
             "content": {
                 "stanza": "Se fue de Belmont al rancho, \nlo alacanzaron a rodear, \npoquitos más de trescientos, \ny allí les brincó el corral.",
-            
+                "articleImg": "/Users/dianitalopez/Documents/GitHub/gregmapbox/articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.pdf"
+
             }
         },
         {
@@ -79,7 +83,8 @@ const data = {
             },
             "content": {
                 "stanza": "Salió Gregorio Cortez, \nsalió con rumbo a Laredo, \nno lo quisieron seguir \nporque le tuvieron miedo.",
-            
+                "articleImg": "/Users/dianitalopez/Documents/GitHub/gregmapbox/articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.pdf"
+
             }
         },
         {
@@ -98,7 +103,8 @@ const data = {
             },
             "content": {
                 "stanza": "Allá por El Encinal, \nsegún lo que aquí se dice, \nle formaron un corral y les mató otro cherife.",
-                
+                "articleImg": "/Users/dianitalopez/Documents/GitHub/gregmapbox/articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.pdf"
+
             }
         }
     ]
