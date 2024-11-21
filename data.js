@@ -10,6 +10,7 @@ const data = {
     "features": [
         {
             "type": "Feature",
+            "id": 1,
             "properties": {
                 "address": "Karnes County, Texas",
                 "Latitude": 28.8791858,
@@ -25,11 +26,12 @@ const data = {
             "content": {
                 "stanza": "En el condad de Carnes. \nmiren lo que ha sucedido,\nmurió el Cherife Mayor. \nquednado Roman herido",
                 "articleImg": "articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.png",
-                "articleLink": "https://iw-newsbank-com.libweb.lib.utsa.edu/apps/news/openurl?ctx_ver=z39.88-2004&rft_id=info%3Asid/iw.newsbank.com&svc_dat=WORLDNEWS&req_dat=0D0F016D1EBEF7EA&rft_val_format=info%3Aofi/fmt%3Akev%3Amtx%3Actx&rft_dat=document_id%3Aimage%252Fv2%253A0F99DDB671832188%2540WHNPX-1070CE51AD893A00%25402415554-1070CE51E9156138%25400-1070CE55393F9FD8%2540Hot%252Bon%252BHis%252BTrail/hlterms%3AHot%2520on%2520His%2520Trail"
+                "articleLink": "articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.pdf"
             }
         },
         {
             "type": "Feature",
+            "id": 2,
             "properties": {
                 "address": "Gonzales County, Texas",
                 "Latitude": 29.4436555,
@@ -44,12 +46,14 @@ const data = {
             },
             "content":{
                 "stanza":"Tiró con rumbo a Gonzales \nsin ninguna timidez:\n--Síganme rinches cobardes, \nyo soy Gregorio Cortez.",
-                "articleImg": "articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.pdf"
+                "articleImg": "articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.pdf",
+                "articleLink":" "
 
             }
         },
         {
             "type": "Feature",
+            "id": 3,
             "properties": {
                 "address": "Belmont, Gonzalez County, Texas",
                 "Latitude": 29.5241066,
@@ -70,6 +74,7 @@ const data = {
         },
         {
             "type": "Feature",
+            "id": 4,
             "properties": {
                 "address": "Laredo, Texas",
                 "Latitude": 27.5075005,
@@ -90,6 +95,7 @@ const data = {
         },
         {
             "type": "Feature",
+            "id": 5,
             "properties": {
                 "address": "Encinal, Texas",
                 "Latitude": 28.0406329,

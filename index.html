@@ -6,6 +6,7 @@
 <title>Display a map on a webpage</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
 <link href="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.css" rel="stylesheet">
+<link rel="stylesheet" href="main.css">
 <script src="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.js"></script>
 <style>
 body { margin: 0; padding: 0; }
@@ -20,39 +21,46 @@ body { margin: 0; padding: 0; }
     // TO MAKE THE MAP APPEAR YOU MUST
 	// ADD YOUR ACCESS TOKEN FROM
 	// https://account.mapbox.com
-	mapboxgl.accessToken = 'pk.eyJ1IjoiZGlhbml0YTk1NiIsImEiOiJjbTNuamNzam0wdHRrMmxxMW81MHMxMTdpIn0.-1QhN4HjJq36viH82gJUtg';
-    const map = new mapboxgl.Map({
-        container: 'map', // container ID
-        center: [-98.5, 28.5], // starting position [lng, lat]. Note that lat must be set between -90 and 90
-        zoom: 7 // starting zoom
-    });
 
-    map.on('load', () => {
-        console.log(data.features)
-        data.features.forEach(feature => {
-            console.log(feature.properties.Latitude)
-            console.log(feature.properties.Longitude)
-            const lat = feature.properties.Latitude;
-            const long = feature.properties.Longitude;
-            const address = feature.properties.address;
-            const stanza = feature.content.stanza;
-            const articleImg = feature.content.articleImg;
-            const articleLink = feature.content.articleLink;
+    //const map = new mapboxgl.Map({
+       //container: 'map', // container ID
+        //center: [-98.5, 28.5], // starting position [lng, lat]. Note that lat must be set between -90 and 90
+        //zoom: 7 // starting zoom
+    //});
 
-            const marker = new mapboxgl.Marker()
-                .setLngLat([long,lat])  
-                .setPopup(new mapboxgl.Popup().setHTML(`
-                    <h1>${address}</h1>
-                    <p>${stanza}</p>   
-                    <p><a href="${articleLink}" target="_blank" style="color: blue; text-decoration: underline;">Read full article</a></p>
-                    <img src="${articleImg}" alt="Article Image" style="max-width: 100%; height: auto;"></img>
+    // map.on('load', () => {
+    //     console.log(data.features)
+    //     data.features.forEach(feature => {
+    //         //console.log(feature.properties.Latitude)
+    //         //console.log(feature.properties.Longitude)
+    //         const lat = feature.properties.Latitude;
+    //         const long = feature.properties.Longitude;
+    //         const address = feature.properties.address;
+    //         const stanza = feature.content.stanza;
+    //         const articleImg = feature.content.articleImg;
+    //         const articleLink = feature.content.articleLink;
+
+    //         const marker = new mapboxgl.Marker()
+    //             .setLngLat([long,lat])  
+    //             .setPopup(new mapboxgl.Popup().setHTML(`
+    //                 <h1>${address}</h1>
+    //                 <p>${stanza}</p>   
+    //                 <p>
+    //                     <a href="${articleLink}" target="_blank">Read full article</a>
+    //                 </p>
+    //                 <div class="news-image">
+    //                     <img src="${articleImg}" alt="Article Image"></img>
+    //                 </div>
                                  
-                `))
-                .addTo(map);  
-        });
+    //             `))
+    //             .addTo(map);  
+    //         const markerEl = marker.getElement();
+    //         markerEl.dataset.id = feature.id;
+    //         console.log(markerEl)
+    //     });
     
     
-    });
+    //});
 </script>
 <script src="index.js"></script>
 
