@@ -25,6 +25,7 @@ const data = {
             },
             "content": {
                 "stanza": "En el condad de Carnes. \nmiren lo que ha sucedido,\nmurió el Cherife Mayor. \nquednado Roman herido",
+                "audioFile":"audio/Tejeda_Greg_Cortez.mp3",
                 "articleImg": "articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.png",
                 "articleLink": "articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.pdf"
             }
@@ -46,6 +47,7 @@ const data = {
             },
             "content":{
                 "stanza":"Tiró con rumbo a Gonzales \nsin ninguna timidez:\n--Síganme rinches cobardes, \nyo soy Gregorio Cortez.",
+                "audioFile":"",
                 "articleImg": "articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.pdf",
                 "articleLink":" "
 
@@ -68,7 +70,9 @@ const data = {
             },
             "content": {
                 "stanza": "Se fue de Belmont al rancho, \nlo alacanzaron a rodear, \npoquitos más de trescientos, \ny allí les brincó el corral.",
-                "articleImg": "articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.pdf"
+                "audioFile":"",
+                "articleImg": "articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.pdf",
+                "articleLink":" "
 
             }
         },
@@ -89,7 +93,9 @@ const data = {
             },
             "content": {
                 "stanza": "Salió Gregorio Cortez, \nsalió con rumbo a Laredo, \nno lo quisieron seguir \nporque le tuvieron miedo.",
-                "articleImg": "articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.pdf"
+                "audioFile":"",
+                "articleImg": "articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.pdf",
+                "articleLink":" "
 
             }
         },
@@ -110,7 +116,9 @@ const data = {
             },
             "content": {
                 "stanza": "Allá por El Encinal, \nsegún lo que aquí se dice, \nle formaron un corral y les mató otro cherife.",
-                "articleImg": "articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.pdf"
+                "audioFile":"",
+                "articleImg": "articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.pdf",
+                "articleLink":" "
 
             }
         }
