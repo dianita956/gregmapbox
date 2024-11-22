@@ -6,3 +6,7 @@ div.news-image {
 img {
     max-width: 100%;
 }
+.audio-player {
+    width: 200px;
+    margin: 10px;
+}
