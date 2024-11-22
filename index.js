@@ -18,15 +18,6 @@
 
     }
 
-// define playAudio. 
-
-    const playAudio = () => {
-        const audioElement = document.getElementById('myAudio');
-        audioElement.play().catch(error => {
-            console.error("error playing audio", error);
-        });
-    };
-
    const addMarkers = async(datajson, map) => {
         console.log(datajson.features)
         data.features.forEach(feature => {
@@ -44,7 +35,7 @@
                 .setLngLat([long,lat])  
                 .setPopup(new mapboxgl.Popup().setHTML(`
                     <h1>${address}</h1> 
-                    <div class="stanza-with-audio">
+                    <div class="playAudio">
                         <button class="play-button" onClick="playAudio('${audioFile}')">▶</button>
                         <p class="stanza">${stanza}</p> 
                     </div>
