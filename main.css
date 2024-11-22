@@ -1,6 +1,6 @@
 div.news-image {
     max-height: 25dvh;
-    overflow-y: hidden;
+    overflow-y: scroll;
 }
 
 img {

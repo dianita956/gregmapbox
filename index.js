@@ -17,8 +17,18 @@
         })
 
     }
+
+// define playAudio. 
+
+    const playAudio = () => {
+        const audioElement = document.getElementById('myAudio');
+        audioElement.play().catch(error => {
+            console.error("error playing audio", error);
+        });
+    };
+
    const addMarkers = async(datajson, map) => {
-        console.log(data.features)
+        console.log(datajson.features)
         data.features.forEach(feature => {
             //console.log(feature.properties.Latitude)
             //console.log(feature.properties.Longitude)
@@ -28,19 +38,23 @@
             const stanza = feature.content.stanza;
             const articleImg = feature.content.articleImg;
             const articleLink = feature.content.articleLink;
+            const audioFile = feature.content.audioFile; 
 
             const marker = new mapboxgl.Marker()
                 .setLngLat([long,lat])  
                 .setPopup(new mapboxgl.Popup().setHTML(`
-                    <h1>${address}</h1>
-                    <p>${stanza}</p>   
+                    <h1>${address}</h1> 
+                    <div class="stanza-with-audio">
+                        <button class="play-button" onClick="playAudio('${audioFile}')">▶</button>
+                        <p class="stanza">${stanza}</p> 
+                    </div>
                     <p>
                         <a href="${articleLink}" target="_blank">Read full article</a>
                     </p>
                     <div class="news-image">
                         <img src="${articleImg}" alt="Article Image"></img>
                     </div>
-                                 
+                    <audio id="audio-${feature.id}" src="${audioFile}"></audio>           
                 `))
                 .addTo(map);  
             const markerEl = marker.getElement();
@@ -48,6 +62,7 @@
             console.log(markerEl)
         });
         }
+
     const map = await genMap();
     await addMarkers(data, map)
     const markerElement = document.querySelector('.mapboxgl-marker[data-id="1"]');
