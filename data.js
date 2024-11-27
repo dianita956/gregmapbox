@@ -24,7 +24,8 @@ const data = {
                 ]
             },
             "content": {
-                "stanza": "En el condad de Carnes. \nmiren lo que ha sucedido,\nmurió el Cherife Mayor. \nquednado Roman herido",
+                "stanzaEs": "En el condad de Carnes. \nmiren lo que ha sucedido,\nmurió el Cherife Mayor. \nquednado Roman herido",
+                "stanzaEn": "In the county of Karnes, \nLook what has happened; \nThe Major Sheriff died, \nLeaving Román badly wounded.",
                 "audioFile":"audio/Tejeda_Greg_Cortez.mp3",
                 "articleImg": "articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.png",
                 "articleLink": "articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.pdf"

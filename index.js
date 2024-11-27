@@ -26,7 +26,8 @@
             const lat = feature.properties.Latitude;
             const long = feature.properties.Longitude;
             const address = feature.properties.address;
-            const stanza = feature.content.stanza;
+            const stanzaEs = feature.content.stanza;
+            const stanzaEn = feature.content.stanza;
             const articleImg = feature.content.articleImg;
             const articleLink = feature.content.articleLink;
             const audioFile = feature.content.audioFile; 
@@ -42,6 +43,7 @@
                 .setPopup(new mapboxgl.Popup().setHTML(`
                     <h1>${address}</h1> 
                     ${audioHtml}
+                    <p class="stanza">${stanzaEs}</p> 
                     <p class="stanza">${stanza}</p> 
                     <p>
                         <a href="${articleLink}" target="_blank">Read full article</a>
