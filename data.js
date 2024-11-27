@@ -25,7 +25,7 @@ const data = {
             },
             "content": {
                 "stanza": "En el condad de Carnes. \nmiren lo que ha sucedido,\nmurió el Cherife Mayor. \nquednado Roman herido",
-                "audioFile":"audio/Tejeda_Greg_Cortez.mp3",
+                "audioFile":"Tejeda_Greg_Cortez.mp3",
                 "articleImg": "articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.png",
                 "articleLink": "articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.pdf"
             }
@@ -47,7 +47,7 @@ const data = {
             },
             "content":{
                 "stanza":"Tiró con rumbo a Gonzales \nsin ninguna timidez:\n--Síganme rinches cobardes, \nyo soy Gregorio Cortez.",
-                "audioFile":"audio/Tejeda_Greg_Cortez.mp3",
+                "audioFile":"",
                 "articleImg": "articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.pdf",
                 "articleLink":" "
 

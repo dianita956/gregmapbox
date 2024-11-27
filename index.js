@@ -32,7 +32,7 @@
             const audioFile = feature.content.audioFile; 
             const audioHtml = `
                 <div class="custom-audio-player">
-                    <button class="play-button" onclick="togglePlay(this)">▶</button>
+                    <button class="play-button" onclick="togglePlay(this)">Play</button>
                     <audio src="${audioFile}" type="audio/mpeg"></audio>
                 </div>
 `;
@@ -57,12 +57,23 @@
             // Global function for play/pause toggle
                 window.togglePlay = function(button) {
                     const audio = button.nextElementSibling;
+
+                    //pause all other audio elements
+                    document.querySelectorAll('audio').forEach((a) => {
+                        if (a !== audio) {
+                            a.pause();
+                            const otherButton = a.previousElementSibling;
+                            if (otherButton) otherButton.textContent = "Play";
+                        }
+                    });
+
+                    //toogle play/pause for the clicked button
                     if (audio.paused) {
                         audio.play();
-                        button.textContent = "⏸";
+                        button.textContent = "Pause";
                     } else {
                         audio.pause();
-                        button.textContent = "▶";
+                        button.textContent = "Play";
                     }
                 };
 
