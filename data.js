@@ -25,7 +25,7 @@ const data = {
             },
             "content": {
                 "stanza": "En el condad de Carnes. \nmiren lo que ha sucedido,\nmurió el Cherife Mayor. \nquednado Roman herido",
-                "audioFile":"Tejeda_Greg_Cortez.mp3",
+                "audioFile":"audio/Tejeda_Greg_Cortez.mp3",
                 "articleImg": "articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.png",
                 "articleLink": "articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.pdf"
             }
