@@ -32,7 +32,7 @@
             const audioFile = feature.content.audioFile; 
             const audioHtml = `
                 <div class="custom-audio-player">
-                    <button class="play-button" onclick="togglePlay(this)">Play</button>
+                    <button class="play-button" onclick="togglePlay(this)">Listen Now</button>
                     <audio src="${audioFile}" type="audio/mpeg"></audio>
                 </div>
 `;
