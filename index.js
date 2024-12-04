@@ -2,11 +2,11 @@
 (async () => {
     const MBTOKEN = "pk.eyJ1IjoiZGlhbml0YTk1NiIsImEiOiJjbTNuamNzam0wdHRrMmxxMW81MHMxMTdpIn0.-1QhN4HjJq36viH82gJUtg";
 
-    const mapConfig = {
+    const mapConfig = { // Q: Should i remove mapConfig?
         container: 'map', // container ID
         center: [-98.5, 28.5], // starting position [lng, lat]. Note that lat must be set between -90 and 90
         zoom: 7 // starting zoom
-    }
+    };
 
     const genMap = async() => {
         mapboxgl.accessToken = MBTOKEN;
@@ -16,7 +16,7 @@
             zoom: 7 // starting zoom
         })
 
-    }
+    };
 
    const addMarkers = async(datajson, map) => {
         console.log(datajson.features)
