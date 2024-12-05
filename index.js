@@ -130,8 +130,10 @@
          };
    
     //placing chapters to a sidebar
-   /* const addChaptersToSidebar = (data, containerId) => {
+    const addChaptersToSidebar = (data, containerId) => {
+        const featuresDiv = document.querySelector("#features");
         const container = document.getElementById(containerId);
+        const sidebar = '';
         data.features.forEach((feature) => {
             const id = `chapter-${feature.id}`;
             const section = document.createElement('section');
@@ -147,13 +149,16 @@
                 <img src="${feature.content.articleImg}" alt="Article Image">
             `;
             container.appendChild(section);
+            sidebar += section;
+            featuresDiv.innerHTML = sidebar;
         });
-    };*/
+        console.log(section);
+    };
 
     const map = await genMap();
     await addMarkers(data, map)
     const markerElement = document.querySelector('.mapboxgl-marker[data-id="1"]');
     markerElement.click()
-    //addChaptersToSidebar(data, 'features')
+    addChaptersToSidebar(data, 'features')
 
 })();
