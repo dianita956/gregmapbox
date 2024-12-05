@@ -8,9 +8,7 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.css" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.js"></script>
-    <script src="data.js"></script>
     
-
     <style>
         body { margin: 0; padding: 0; font-family: sans-serif; }
         #map { position: absolute; top: 0; bottom: 0; width: 100%;}
@@ -40,8 +38,9 @@
 </head>
 <body>
 <div id="map"></div>
-<div id="features"></div>
-<script src="index.js"></script>
+<div id="features"> <!--NEW creating sections for chapters. Fly to location based on scrolling-->
+</div>
+<script src="data.js"></script>
 <script>
     // TO MAKE THE MAP APPEAR YOU MUST
 	// ADD YOUR ACCESS TOKEN FROM
@@ -87,6 +86,7 @@
     
     //});
 </script>
+<script src="index.js"></script>
 </body>
 </html>
 

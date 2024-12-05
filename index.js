@@ -2,11 +2,11 @@
 (async () => {
     const MBTOKEN = "pk.eyJ1IjoiZGlhbml0YTk1NiIsImEiOiJjbTNuamNzam0wdHRrMmxxMW81MHMxMTdpIn0.-1QhN4HjJq36viH82gJUtg";
 
-    const mapConfig = { // Q: Should i remove mapConfig?
-        container: 'map', // container ID
-        center: [-98.5, 28.5], // starting position [lng, lat]. Note that lat must be set between -90 and 90
-        zoom: 7 // starting zoom
-    };
+    //const mapConfig = { // Q: Should i remove mapConfig?
+    //    container: 'map', // container ID
+    //    center: [-98.5, 28.5], // starting position [lng, lat]. Note that lat must be set between -90 and 90
+    //    zoom: 7 // starting zoom
+   // };
 
     const genMap = async() => {
         mapboxgl.accessToken = MBTOKEN;
@@ -17,41 +17,8 @@
         })
 
     };
-    // creating chapters for each location //NEW
-    const chapters = {};
-    data.features.forEach((feature)=> {
-        const id = 'chapter-${feature.id'; //is handing data errors?
-        chapters[id] = {
-            center: [feature.properties.Longitude, feature.properties.Latitude],
-            zoom: 10,
-            pitch: 45,
-            bearing:0,
-            content: feature.content
-        };
-    });
-    //keeping addMarkers
-    const addChaptersToSidebar = (data, containerId) => {
-        const container = document.getElementById(containerId);
-        data.features.forEach((feature) => {
-            const id = `chapter-${feature.id}`;
-            const section = document.createElement('section');
-            section.id = id;
-            section.innerHTML = `
-                <h3>${feature.properties.address}</h3>
-                <p>${feature.content.stanzaEn}</p>
-                <audio controls>
-                    <source src="${feature.content.audioFile}" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-                <a href="${feature.content.articleLink}" target="_blank">Read Article</a>
-                <img src="${feature.content.articleImg}" alt="Article Image">
-            `;
-            container.appendChild(section);
-        });
-    };
-    
 
-   const addMarkers = async(datajson, map) => {
+    const addMarkers = async(datajson, map) => {
         console.log(datajson.features)
         data.features.forEach(feature => {
             //console.log(feature.properties.Latitude)
@@ -87,7 +54,9 @@
                               
                 `))
 
-            .addTo(map);  
+    
+
+            .addTo(map); 
 
             // Global function for play/pause toggle
                 window.togglePlay = function(button) {
@@ -118,10 +87,73 @@
         });
         }
 
+        // creating chapters for each location //NEW
+    const chapters = {};
+    data.features.forEach((feature)=> {
+        const id = 'chapter-${feature.id}'; 
+        chapters[id] = {
+            center: [feature.properties.Longitude, feature.properties.Latitude],
+            zoom: 8,
+            pitch: 0,
+            bearing:0,
+            content: [feature.properties.content]
+        };
+    });
+
+      // creating active chapter
+      let activeChapterName = 'chapter-1';
+      function setActiveChapter(chapterName) {
+          if (chapterName === activeChapterName) return;
+  
+          map.flyTo(chapters[chapterName]);
+  
+          document.getElementById(chapterName).classList.add('active');
+          document.getElementById(activeChapterName).classList.remove('active');
+  
+          activeChapterName = chapterName;
+      };
+  
+      function isElementOnScreen(id) {
+          const element = document.getElementById(id);
+          const bounds = element.getBoundingClientRect();
+          return bounds.top < window.innerHeight && bounds.bottom > 0;
+      };
+
+      // On every scroll event, check which element is on screen
+      window.onscroll = () => {
+          for (const chapterName in chapters) {
+              if (isElementOnScreen(chapterName)) {
+                  setActiveChapter(chapterName);
+                  break;
+              }
+          }
+         };
+   
+    //placing chapters to a sidebar
+   /* const addChaptersToSidebar = (data, containerId) => {
+        const container = document.getElementById(containerId);
+        data.features.forEach((feature) => {
+            const id = `chapter-${feature.id}`;
+            const section = document.createElement('section');
+            section.id = id;
+            section.innerHTML = `
+                <h3>${feature.properties.address}</h3>
+                <p>${feature.content.stanzaEn}</p>
+                <audio controls>
+                    <source src="${feature.content.audioFile}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <a href="${feature.content.articleLink}" target="_blank">Read Article</a>
+                <img src="${feature.content.articleImg}" alt="Article Image">
+            `;
+            container.appendChild(section);
+        });
+    };*/
+
     const map = await genMap();
     await addMarkers(data, map)
     const markerElement = document.querySelector('.mapboxgl-marker[data-id="1"]');
     markerElement.click()
-    addChaptersToSidebar(data, 'features')
+    //addChaptersToSidebar(data, 'features')
 
 })();
