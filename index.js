@@ -17,6 +17,39 @@
         })
 
     };
+    // creating chapters for each location //NEW
+    const chapters = {};
+    data.features.forEach((feature)=> {
+        const id = 'chapter-${feature.id'; //is handing data errors?
+        chapters[id] = {
+            center: [feature.properties.Longitude, feature.properties.Latitude],
+            zoom: 10,
+            pitch: 45,
+            bearing:0,
+            content: feature.content
+        };
+    });
+    //keeping addMarkers
+    const addChaptersToSidebar = (data, containerId) => {
+        const container = document.getElementById(containerId);
+        data.features.forEach((feature) => {
+            const id = `chapter-${feature.id}`;
+            const section = document.createElement('section');
+            section.id = id;
+            section.innerHTML = `
+                <h3>${feature.properties.address}</h3>
+                <p>${feature.content.stanzaEn}</p>
+                <audio controls>
+                    <source src="${feature.content.audioFile}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <a href="${feature.content.articleLink}" target="_blank">Read Article</a>
+                <img src="${feature.content.articleImg}" alt="Article Image">
+            `;
+            container.appendChild(section);
+        });
+    };
+    
 
    const addMarkers = async(datajson, map) => {
         console.log(datajson.features)
@@ -89,5 +122,6 @@
     await addMarkers(data, map)
     const markerElement = document.querySelector('.mapboxgl-marker[data-id="1"]');
     markerElement.click()
+    addChaptersToSidebar(data, 'features')
 
 })();

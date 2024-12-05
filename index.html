@@ -8,20 +8,40 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.css" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.js"></script>
-    <!--<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.js'></script> NEW storytelling-->
-    <!--<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.css' rel='stylesheet' /> NEW storytelling-->
-    <!--<script src="https://cdn.jsdelivr.net/npm/mapbox-gl-globe-minimap@1.2.0/dist/bundle.js"></script> NEW storytelling-->
-    <src="https://unpkg.com/scrollama"></script> <!--NEW scrollama-->
+    <script src="data.js"></script>
+    
+
     <style>
         body { margin: 0; padding: 0; font-family: sans-serif; }
-        #map { position: absolute; top: 0; bottom: 0; width: 100%; }
-        .map-popup{ font-size: 14px; line-height: 1.5;} /* NEW add map popup */ 
+        #map { position: absolute; top: 0; bottom: 0; width: 100%;}
+        #features {
+            width: 50%;
+            margin-left: 50%;
+            font-family: sans-serif;
+            overflow-y: scroll;
+            background-color: #fafafa;
+        }
+        section {
+            padding: 25px 50px;
+            line-height: 25px;
+            border-bottom: 1px solid #ddd;
+            opacity: 0.25;
+            font-size: 13px;
+        }
+        section.active {
+            opacity: 1;
+        }
+        section:last-child {
+            border-bottom: none;
+            margin-bottom: 200px;
+        }
+        /*.map-popup{ font-size: 14px; line-height: 1.5;} /* NEW add map popup */ 
 </style>
 </head>
 <body>
 <div id="map"></div>
-<div id="story"></div> <!--NEW storytelling config-->
-<script src="data.js"></script>
+<div id="features"></div>
+<script src="index.js"></script>
 <script>
     // TO MAKE THE MAP APPEAR YOU MUST
 	// ADD YOUR ACCESS TOKEN FROM
@@ -67,9 +87,6 @@
     
     //});
 </script>
-<script src="config.js"></script> <!--NEW config file for storytelling chapters-->
-<script src="index.js"></script>
-
 </body>
 </html>
 
