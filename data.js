@@ -49,7 +49,7 @@ const data = {
             "content":{
                 "stanza":"Tiró con rumbo a Gonzales \nsin ninguna timidez:\n--Síganme rinches cobardes, \nyo soy Gregorio Cortez.",
                 "audioFile":"",
-                "articleImg": "articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.pdf",
+                "articleImg": "articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.png",
                 "articleLink": "articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.pdf"
 
             }
@@ -72,8 +72,8 @@ const data = {
             "content": {
                 "stanza": "Se fue de Belmont al rancho, \nlo alacanzaron a rodear, \npoquitos más de trescientos, \ny allí les brincó el corral.",
                 "audioFile":"",
-                "articleImg": "articleImg/Cortez_is_in_Bexar_Jail._the_Slayer_of_Sheriffs__San_Antonio_Express_published_as_The_Daily_Express___June_25_1901__p1_4.png",
-                "articleLink":"articleImg/Cortez_is_in_Bexar_Jail._the_Slayer_of_Sheriffs__San_Antonio_Express_published_as_The_Daily_Express___June_25_1901__p1_4.pdf"
+                "articleImg": "articleImg/Officers_on_Hot_Trails._Many_Determined_Men_Are_in__San_Antonio_Express_published_as_The_Daily_Express___June_18_1901__p1_2.pdf",
+                "articleLink":"articleImg/Officers_on_Hot_Trails._Many_Determined_Men_Are_in__San_Antonio_Express_published_as_The_Daily_Express___June_18_1901__p1_2.pdf"
 
             }
         },
@@ -117,7 +117,7 @@ const data = {
             },
             "content": {
                 "stanza": "Allá por El Encinal, \nsegún lo que aquí se dice, \nle formaron un corral y les mató otro cherife.",
-                "audioFile":"",
+                "audioFile":" ",
                 "articleImg": "articleImg/Cortez_Eludes_Pursuers_Wily_Fugitive_Seems_to_Have__San_Antonio_Express_published_as_The_Daily_Express___June_22_1901__p1_2.png",
                 "articleLink":"articleImg/Cortez_Eludes_Pursuers_Wily_Fugitive_Seems_to_Have__San_Antonio_Express_published_as_The_Daily_Express___June_22_1901__p1_2.pdf"
 
