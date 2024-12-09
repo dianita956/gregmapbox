@@ -74,7 +74,7 @@ const data = {
                 "stanzaEs": "Se fue de Belmont al rancho, \nlo alacanzaron a rodear, \npoquitos más de trescientos, \ny allí les brincó el corral.",
                 "stanzaEn": "From Belmont he went to the ranch,\nThey succeeded in surrounding him, \nQuite a few more than three hundred,\nBut there he jumped their corral.",
                 "audioFile":"",
-                "articleImg": "articleImg/Officers_on_Hot_Trails._Many_Determined_Men_Are_in__San_Antonio_Express_published_as_The_Daily_Express___June_18_1901__p1_2.pdf",
+                "articleImg": "articleImg/Officers_on_Hot_Trails._Many_Determined_Men_Are_in__San_Antonio_Express_published_as_The_Daily_Express___June_18_1901__p1_2.png",
                 "articleLink":"articleImg/Officers_on_Hot_Trails._Many_Determined_Men_Are_in__San_Antonio_Express_published_as_The_Daily_Express___June_18_1901__p1_2.pdf"
 
             }
