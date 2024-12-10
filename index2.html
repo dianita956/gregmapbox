@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Map with Dynamic Scroll Content</title>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.js"></script>
+    <style>
+        body { margin: 0; padding: 0; }
+        #map { position: fixed; top: 0; bottom: 0; width: 50%; }
+        #features {
+            width: 50%;
+            margin-left: 50%;
+            font-family: sans-serif;
+            background-color: #fafafa;
+        }
+        section {
+            padding: 10px 10px;
+            line-height: 10px;
+            border-bottom: 1px solid #ddd;
+            opacity: 1;
+            font-size: 14px;
+        }
+        section.active {
+            opacity: 1;
+        }
+        section:last-child {
+            border-bottom: auto;
+            margin-bottom: 200px;
+        }
+        .news-image img {
+            width: auto;  /* Make the image fill the container width */
+            height: auto; /* Maintain aspect ratio */
+            overflow-y: scroll;
+            max-width: 100dvh;  /* Limit the maximum width of the image */
+        }
+</style>
+</head>
+<body>
+    <div id="map"></div>
+    <div id="features"></div>
+
+    <script>
+        // Mapbox setup
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZGlhbml0YTk1NiIsImEiOiJjbTNuamNzam0wdHRrMmxxMW81MHMxMTdpIn0.-1QhN4HjJq36viH82gJUtg'; // Replace with your Mapbox access token
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v12',
+            center: [-98.3, 28.5],
+            zoom: 7
+        });
+
+        const data = {
+            "type": "FeatureCollection",
+            "name": "gdf",
+            "crs": {
+                "type": "name",
+                "properties": {
+                    "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+                }
+            },
+            "features": [
+                {
+                    "type": "Feature",
+                    "id": 1,
+                    "properties": {
+                        "address": "Karnes County, Texas",
+                        "Latitude": 28.8791858,
+                        "Longitude": -97.9062893
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-97.9062893, 28.8791858]
+                    },
+                    "content": {
+                        "stanzaEs": "En el condad de Carnes. \nmiren lo que ha sucedido,\nmurió el Cherife Mayor. \nquednado Roman herido",
+                        "stanzaEn": "In the county of Karnes, \nLook what has happened; \nThe Major Sheriff died, \nLeaving Román badly wounded.",
+                        "audioFile":"audio/Tejeda_Greg_Cortez.mp3",
+                        "articleImg": "articleImg/Cortez_is_in_Bexar_Jail._the_Slayer_of_Sheriffs__San_Antonio_Express_published_as_The_Daily_Express___June_25_1901__p1_4.png",
+                        "articleLink": "articleImg/Cortez_is_in_Bexar_Jail._the_Slayer_of_Sheriffs__San_Antonio_Express_published_as_The_Daily_Express___June_25_1901__p1_4.pdf"
+                    }
+                },
+                {
+            "type": "Feature",
+            "id": 2,
+            "properties": {
+                "address": "Gonzales County, Texas",
+                "Latitude": 29.4436555,
+                "Longitude": -97.5108636
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.5108636,
+                    29.4436555
+                ]
+            },
+            "content":{
+                "stanzaEs":"Tiró con rumbo a Gonzales \nsin ninguna timidez:\n--Síganme rinches cobardes, \nyo soy Gregorio Cortez.",
+                "stanzaEn": "He struck out for Gonzales \nWithout showing any fear, \n'Follow me, cowardly rangers, \nI am Gregorio Cortez.'",
+                "audioFile":null,
+                "articleImg": "articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.png",
+                "articleLink": "articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.pdf"
+
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 3,
+            "properties": {
+                "address": "Belmont, Gonzalez County, Texas",
+                "Latitude": 29.5241066,
+                "Longitude": -97.6875125
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -97.6875125,
+                    29.5241066
+                ]
+            },
+            "content": {
+                "stanzaEs": "Se fue de Belmont al rancho, \nlo alacanzaron a rodear, \npoquitos más de trescientos, \ny allí les brincó el corral.",
+                "stanzaEn": "From Belmont he went to the ranch,\nThey succeeded in surrounding him, \nQuite a few more than three hundred,\nBut there he jumped their corral.",
+                "audioFile":null,
+                "articleImg": "articleImg/Officers_on_Hot_Trails._Many_Determined_Men_Are_in__San_Antonio_Express_published_as_The_Daily_Express___June_18_1901__p1_2.png",
+                "articleLink":"articleImg/Officers_on_Hot_Trails._Many_Determined_Men_Are_in__San_Antonio_Express_published_as_The_Daily_Express___June_18_1901__p1_2.pdf"
+
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 4,
+            "properties": {
+                "address": "Laredo, Texas",
+                "Latitude": 27.5075005,
+                "Longitude": -99.5069922
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -99.5069922,
+                    27.5075005
+                ]
+            },
+            "content": {
+                "stanzaEs": "Salió Gregorio Cortez, \nsalió con rumbo a Laredo, \nno lo quisieron seguir \nporque le tuvieron miedo.",
+                "stanzaEn": "Gregorio Cortez went out, \nHe went towards Laredo \nThey decided not to follow \nBecause they were afraid of him.",
+                "audioFile":null,
+                "articleImg": "articleImg/Cortez_Has_Been_Identified._William_Loueary_and__San_Antonio_Express_published_as_The_Daily_Express___June_24_1901__p1_2.png",
+                "articleLink":"articleImg/Cortez_Has_Been_Identified._William_Loueary_and__San_Antonio_Express_published_as_The_Daily_Express___June_24_1901__p1_2.pdf"
+
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 5,
+            "properties": {
+                "address": "Encinal, Texas",
+                "Latitude": 28.0406329,
+                "Longitude": -99.3552096
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -99.3552096,
+                    28.0406329
+                ]
+            },
+            "content": {
+                "stanzaEs": "Allá por El Encinal, \nsegún lo que aquí se dice, \nle formaron un corral y les mató otro cherife.",
+                "stanzaEn": "Over by El Encinal,\nAccording to what we hear, \nThey made him a corral, \n And he killed them another sheriff.",
+                "audioFile":null,
+                "articleImg": "articleImg/Cortez_Eludes_Pursuers_Wily_Fugitive_Seems_to_Have__San_Antonio_Express_published_as_The_Daily_Express___June_22_1901__p1_2.png",
+                "articleLink":"articleImg/Cortez_Eludes_Pursuers_Wily_Fugitive_Seems_to_Have__San_Antonio_Express_published_as_The_Daily_Express___June_22_1901__p1_2.pdf"
+
+            }
+        }
+            ]
+        };
+
+        // Add markers and content
+        data.features.forEach((feature) => {
+            // Create marker on the map
+            new mapboxgl.Marker()
+                .setLngLat([feature.geometry.coordinates[0], feature.geometry.coordinates[1]])
+                .setPopup(new mapboxgl.Popup().setHTML(`<h3>${feature.properties.address}</h3>`))
+                .addTo(map);
+
+            // Create dynamic scroll content
+            const section = document.createElement('section');
+            section.id = feature.id;
+            section.innerHTML = `
+                <h1>${feature.properties.address}</h1>
+                ${feature.content.audioFile ? `<audio controls><source src="${feature.content.audioFile}" type="audio/mp3"></audio>` : ''}
+                <p class="stanzaEs">${feature.content.stanzaEs}</p>
+                <p class="stanzaEn">${feature.content.stanzaEn}</p>
+                <p><a href="${feature.content.articleLink}" target="_blank">Read full article</a></p>
+                <div class="news-image">
+                    <img src="${feature.content.articleImg}" alt="Article Image">
+                </div>
+            `;
+            document.getElementById('features').appendChild(section);
+        });
+
+        // Synchronize map with scrolling
+        const chapters = data.features.reduce((acc, feature) => {
+            acc[feature.id] = {
+                bearing: 27,
+                center: [feature.geometry.coordinates[0], feature.geometry.coordinates[1]],
+                zoom: 10
+            };
+            return acc;
+        }, {});
+
+        let activeChapterName = data.features[0].id;
+
+        function setActiveChapter(chapterName) {
+            if (chapterName === activeChapterName) return;
+
+            map.flyTo(chapters[chapterName]);
+
+            document.getElementById(chapterName).classList.add('active');
+            document.getElementById(activeChapterName).classList.remove('active');
+
+            activeChapterName = chapterName;
+        }
+
+        // Function to check if the section is in the viewport
+        function isElementOnScreen(id) {
+            const element = document.getElementById(id);
+            const bounds = element.getBoundingClientRect();
+            return bounds.top < window.innerHeight && bounds.bottom > 0;
+        }
+
+        // Scroll event listener
+        window.onscroll = () => {
+            for (const feature of data.features) {
+                if (isElementOnScreen(feature.id)) {
+                    setActiveChapter(feature.id);
+                    break;
+                }
+            }
+        };
+    </script>
+</body>
+</html>

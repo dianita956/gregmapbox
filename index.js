@@ -18,8 +18,8 @@
 
     };
 
-    const addMarkers = async(datajson, map) => {
-        console.log(datajson.features)
+    const addMarkers = async(data, map) => {
+        console.log(data.features)
         data.features.forEach(feature => {
             //console.log(feature.properties.Latitude)
             //console.log(feature.properties.Longitude)
@@ -53,8 +53,6 @@
                     </div> 
                               
                 `))
-
-    
 
             .addTo(map); 
 
@@ -105,7 +103,10 @@
       function setActiveChapter(chapterName) {
           if (chapterName === activeChapterName) return;
   
-          map.flyTo(chapters[chapterName]);
+          map.flyTo({
+            center: chapters[chapterName].center,
+            zoom: chapters[chapterName].zoom,
+      });
   
           document.getElementById(chapterName).classList.add('active');
           document.getElementById(activeChapterName).classList.remove('active');
@@ -120,20 +121,23 @@
       };
 
       // On every scroll event, check which element is on screen
+      let scrollTimeout;
       window.onscroll = () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
           for (const chapterName in chapters) {
               if (isElementOnScreen(chapterName)) {
                   setActiveChapter(chapterName);
                   break;
               }
           }
-         };
+        }, 100);
+    };
    
     //placing chapters to a sidebar
     const addChaptersToSidebar = (data, containerId) => {
         const featuresDiv = document.querySelector("#features");
         const container = document.getElementById(containerId);
-        const sidebar = '';
         data.features.forEach((feature) => {
             const id = `chapter-${feature.id}`;
             const section = document.createElement('section');
@@ -149,10 +153,10 @@
                 <img src="${feature.content.articleImg}" alt="Article Image">
             `;
             container.appendChild(section);
-            sidebar += section;
-            featuresDiv.innerHTML = sidebar;
+            //sidebar += section;
+            //featuresDiv.innerHTML = sidebar;
         });
-        console.log(section);
+        //console.log(section);
     };
 
     const map = await genMap();

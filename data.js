@@ -49,7 +49,7 @@ const data = {
             "content":{
                 "stanzaEs":"Tiró con rumbo a Gonzales \nsin ninguna timidez:\n--Síganme rinches cobardes, \nyo soy Gregorio Cortez.",
                 "stanzaEn": "He struck out for Gonzales \nWithout showing any fear, \n'Follow me, cowardly rangers, \nI am Gregorio Cortez.'",
-                "audioFile":" ",
+                "audioFile":null,
                 "articleImg": "articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.png",
                 "articleLink": "articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.pdf"
 
@@ -73,7 +73,7 @@ const data = {
             "content": {
                 "stanzaEs": "Se fue de Belmont al rancho, \nlo alacanzaron a rodear, \npoquitos más de trescientos, \ny allí les brincó el corral.",
                 "stanzaEn": "From Belmont he went to the ranch,\nThey succeeded in surrounding him, \nQuite a few more than three hundred,\nBut there he jumped their corral.",
-                "audioFile":"",
+                "audioFile":null,
                 "articleImg": "articleImg/Officers_on_Hot_Trails._Many_Determined_Men_Are_in__San_Antonio_Express_published_as_The_Daily_Express___June_18_1901__p1_2.png",
                 "articleLink":"articleImg/Officers_on_Hot_Trails._Many_Determined_Men_Are_in__San_Antonio_Express_published_as_The_Daily_Express___June_18_1901__p1_2.pdf"
 
@@ -97,7 +97,7 @@ const data = {
             "content": {
                 "stanzaEs": "Salió Gregorio Cortez, \nsalió con rumbo a Laredo, \nno lo quisieron seguir \nporque le tuvieron miedo.",
                 "stanzaEn": "Gregorio Cortez went out, \nHe went towards Laredo \nThey decided not to follow \nBecause they were afraid of him.",
-                "audioFile":"",
+                "audioFile":null,
                 "articleImg": "articleImg/Cortez_Has_Been_Identified._William_Loueary_and__San_Antonio_Express_published_as_The_Daily_Express___June_24_1901__p1_2.png",
                 "articleLink":"articleImg/Cortez_Has_Been_Identified._William_Loueary_and__San_Antonio_Express_published_as_The_Daily_Express___June_24_1901__p1_2.pdf"
 
@@ -121,7 +121,7 @@ const data = {
             "content": {
                 "stanzaEs": "Allá por El Encinal, \nsegún lo que aquí se dice, \nle formaron un corral y les mató otro cherife.",
                 "stanzaEn": "Over by El Encinal,\nAccording to what we hear, \nThey made him a corral, \n And he killed them another sheriff.",
-                "audioFile":" ",
+                "audioFile":null,
                 "articleImg": "articleImg/Cortez_Eludes_Pursuers_Wily_Fugitive_Seems_to_Have__San_Antonio_Express_published_as_The_Daily_Express___June_22_1901__p1_2.png",
                 "articleLink":"articleImg/Cortez_Eludes_Pursuers_Wily_Fugitive_Seems_to_Have__San_Antonio_Express_published_as_The_Daily_Express___June_22_1901__p1_2.pdf"
 
