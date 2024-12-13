@@ -1,0 +1,98 @@
+<div class="inline-audio-player">
+    <div class="text-audio-wrapper">
+        <button id="playBtn">Play</button>
+        <p>
+        <span class="audio-text" data-start="0" data-end="3">
+            If, however, you believe beyond a reasonable doubt that although such arrest or attempted arrest,
+        </span>
+        <span class="audio-text" data-start="4" data-end="7">
+            if any, was in fact an illegal arrest as herein explained in this charge,
+        </span>
+        <span class="audio-text" data-start="8" data-end="12">
+            and the defendant knew the same to be an illegal arrest,
+        </span>
+        <span class="audio-text" data-start="13" data-end="16">
+            and he resisted such arrest intentionally,
+        </span>
+        <span class="audio-text" data-start="17" data-end="21">
+            because it was an illegal arrest, and that while resisting such arrest he killed deceased,
+        </span>
+        </p>
+    </div>
+    <audio id="audioPlayer" src="audio/Tejeda_Greg_Cortez.mp3"></audio>
+  </div>
+  
+  <style>
+    .audio-text {
+      cursor: pointer;
+      background-color: transparent;
+      transition: background-color 0.2s ease;
+    }
+  
+    .audio-text.active {
+      background-color: rgba(255, 215, 0, 0.5); /* Highlight text during playback */
+    }
+  </style>
+  
+  <script>
+    const audioPlayer = document.getElementById('audioPlayer');
+    const playBtn = document.getElementById('playBtn');
+    const textSpans = document.querySelectorAll('.audio-text');
+  
+    let currentSpanIndex = 0; // Tracks the current active span
+    let isPlaying = false; // Tracks if the audio is playing
+  
+    // Function to activate a span based on audio time
+    function activateSpan(currentTime) {
+      textSpans.forEach((span, index) => {
+        const start = parseFloat(span.getAttribute('data-start'));
+        const end = parseFloat(span.getAttribute('data-end'));
+        if (currentTime >= start && currentTime <= end) {
+          span.classList.add('active');
+          currentSpanIndex = index;
+        } else {
+          span.classList.remove('active');
+        }
+      });
+    }
+  
+    // Play/pause button functionality
+    playBtn.addEventListener('click', () => {
+      if (audioPlayer.paused) {
+        audioPlayer.play();
+        playBtn.textContent = 'Pause';
+        isPlaying = true;
+      } else {
+        audioPlayer.pause();
+        playBtn.textContent = 'Play';
+        isPlaying = false;
+      }
+    });
+  
+    // Update text highlights as audio plays
+    audioPlayer.addEventListener('timeupdate', () => {
+      const currentTime = audioPlayer.currentTime;
+      activateSpan(currentTime);
+    });
+  
+    // Reset on audio end
+    audioPlayer.addEventListener('ended', () => {
+      textSpans[currentSpanIndex].classList.remove('active');
+      playBtn.textContent = 'Play';
+      isPlaying = false;
+    });
+  
+    // Clicking a text span seeks to its corresponding audio time
+    textSpans.forEach(span => {
+      span.addEventListener('click', () => {
+        const start = parseFloat(span.getAttribute('data-start'));
+        audioPlayer.currentTime = start;
+        if (!isPlaying) {
+          audioPlayer.play();
+          playBtn.textContent = 'Pause';
+          isPlaying = true;
+        }
+      });
+    });
+  </script>
+  
