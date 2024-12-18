@@ -72,9 +72,7 @@
         }
 
         .audio-text {
-            background-color: transparent;
-            transition: background-color 0.2s ease;
-            cursor: pointer;
+            transition: background-color 0.3s ease;
             font-family:Verdana, Geneva, Tahoma, sans-serif;
             line-height: 1.5;
         }
@@ -334,8 +332,8 @@
 
         function createAudioPlayer(feature) {
             const stanzaLines = feature.content.stanzaEs.split('\n');
-            const startTimes = [17, 23, 28, 34]; // Adjust timing based on your data for the highlight of each line
-            const endTimes = [22, 27, 33, 45]; // Adjust timing based on your data for the highlight of each line
+            const startTimes = [5, 11,17, 23]; // Adjust timing based on your data for the highlight of each line
+            const endTimes = [10, 16, 22, 30]; // Adjust timing based on your data for the highlight of each line
 
             let stanzaSpans = '';
 
