@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -56,35 +56,32 @@
         }
 
         .text-audio-wrapper {
-            display: flex;
+            display: inline;
             align-items: center;
-            gap: 10px;
+            gap: 6px;
         }
 
         .play-btn {
-            padding: 5px 10px;
+            padding: 5px 5px;
             font-size: 14px;
             cursor: pointer;
+            border-radius: 5px;
+            
         }
-
-        .audio-text-wrapper {
-            display: inline;
-        }
-
-        .audio-text {
+         .audio-text {
             transition: background-color 0.3s ease;
             font-family:Verdana, Geneva, Tahoma, sans-serif;
             line-height: 1.5;
+            
         }
 
         .audio-text.active {
-            background-color: rgba(255, 215, 0, 0.5); /* Highlight text */
+            background-color: rgba(0, 229, 255, 0.729); /* Highlight text */
         }
-        .stanzaEn{
-            font-family:Verdana, Geneva, Tahoma, sans-serif;
+        .stanzaEn {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
             line-height: 1.5;
         }
-            
 </style>
 </head>
 <body>
@@ -125,7 +122,7 @@
                         "coordinates": [-97.9062893, 28.8791858]
                     },
                     "content": {
-                        "stanzaEs": "En el condad de Carnes\nmiren lo que ha sucedido,\nmurió el Cherife Mayor \nquednado Roman herido",
+                        "stanzaEs": "En el condad de Carnes,\nmiren lo que ha sucedido,\nmurió el Cherife Mayor \nquednado Roman herido",
                         "stanzaEn": "In the county of Karnes, \nLook what has happened; \nThe Major Sheriff died, \nLeaving Román badly wounded.",
                         "audioFile":"audio/GC 1 Mixdown.mp3",
                         "articleImg": "articleImg/Cortez_is_in_Bexar_Jail._the_Slayer_of_Sheriffs__San_Antonio_Express_published_as_The_Daily_Express___June_25_1901__p1_4.png",
@@ -342,7 +339,7 @@
                     <span class="audio-text" data-start="${startTimes[index]}" data-end="${endTimes[index]}">${line}</span>
                 `;
             });
-
+//inline audio player html
             return `
                 <div class="inline-audio-player">
                     <div class="text-audio-wrapper">
