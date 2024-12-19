@@ -3,22 +3,20 @@
       <blockquote>
         <button id="playBtn">Play</button>
         <p>
-        <span class="audio-text" data-start="0" data-end="8.8">
-            If, however, you believe beyond a reasonable doubt that although such arrest or attempted arrest,
+        <span class="audio-text" data-start="0" data-end="9.29">
+            "In order to justify a person in resisting an apparent illegal arrest, it is not necessary that he should know it to be illegal. 
         </span>
-        <span class="audio-text" data-start="9" data-end="16.6">
-            if any, was in fact an illegal arrest as herein explained in this charge,
+        <span class="audio-text" data-start="9.3" data-end="20.14">
+          In this case there is no evidence going to show that defendant was informed, or had any means of information that the attempted arrest was a legal one;
         </span>
-        <span class="audio-text" data-start="17" data-end="22.9">
-            and the defendant knew the same to be an illegal arrest,
+        <span class="audio-text" data-start="20.2" data-end="32.2">
+          on the contrary, so far as the evidence discloses, he was justified in believing that the attempted arrest was an illegal one, and in resisting the same.
         </span>
-        <span class="audio-text" data-start="23" data-end="27">
-            and he resisted such arrest intentionally,
+        <span class="audio-text" data-start="32.5" data-end="42.144">
+          The attempted arrest of defendant's brother Romaldo, which was in defendant's presence, was shown by the State's witnesses to have been illegal."
         </span>
-        <span class="audio-text" data-start="28" data-end="36">
-            because it was an illegal arrest, and that while resisting such arrest he killed the deceased,
-        </span>
-        <cite>court case</cite>
+        
+        <cite>Cortez v. State, 44 Tex. Crim. 169</cite>
         </p>
       </blockquote>
     </div>
@@ -29,9 +27,9 @@
     .audio-text {
       transition: background-color 0.3s ease;
     }
-  
     .audio-text.active {
-      background-color: orange;
+      background-color: rgba(255, 166, 0, 0.888);
+      transition: background-color 0.3 ease-in-out;
       font-weight: bold;
       border-radius: 5px;
       padding: 2px;
@@ -39,14 +37,13 @@
     }
     .text-audio-wrapper {
       display:inline-block;
-      font-family:Georgia, 'Times New Roman', Times, serif;
-      font-size: large;
-      margin:1em;
-      max-width:20em;
+      font-size: x-large;
+      font-family: Georgia, Garamond, serif;
+      margin: 1em;
+      max-width: 30em;
       blockquote {
-        border:solid 1em #ccc;
+        border: solid 1em #ccc;
         display:inline-block;
-        margin:0;
         padding:1em;
         position:relative;
         &:before {
@@ -62,13 +59,14 @@
           color:#757575;
           display: block;
           font-size:small;
-          font-style: normal;
+          font-style:italic;
           text-align: right;
           text-transform:uppercase;
+          padding: 2em;
         }
         > * {
-          position: relative;
-          z-index: 1;
+          position:relative;
+          z-index: auto;
         }
       }
     }
