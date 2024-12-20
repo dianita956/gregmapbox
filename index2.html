@@ -261,12 +261,6 @@
                 const marker = new mapboxgl.Marker({
                     color: 'black'
                 })
-                //.setLngLat([feature.geometry.coordinates[0], feature.geometry.coordinates[1]]) (Delete = D)
-                //.setPopup(new mapboxgl.Popup().setHTML(`(D)
-                //<h3>${feature.properties.address}</h> (D)
-                    //${feature.content.audioFile ? createAudioPlayer(feature) : ''} (D)
-                    //<p class="stanza">${feature.content.stanzas.en}</p>(D)
-                    //`))(D)
                 .setLngLat(feature.geometry.coordinates)
                 .setPopup(new mapboxgl.Popup().setHTML(createPopUpContent(feature)))
                     .addTo(map);
@@ -319,7 +313,7 @@
         }, {});
 
         let activeChapterName = data.features[0].id;
-        let activeAudio=null; //var to track the active audio element
+        //let activeAudio=null; //var to track the active audio element
 
         //set active chapter sectiion
         function setActiveChapter(chapterName) {
@@ -339,7 +333,6 @@
                 const playButton = document.querySelector(`button[onclick*="${activeAudio.id}"]`);
                 if (playButton) playButton.textContent = "play"; //reset button text
             }
-            //map.flyTo(chapters[chapterName]); (delete = D)
         }
             //note: change marker colors
         function updateActiveMarker(chapterName){
@@ -354,9 +347,6 @@
         function updateActiveSection(chapterName){
             document.getElementById(chapterName).classList.add('active');
             document.getElementById(activeChapterName).classList.remove('active');
-            //set new active chapter and update marker color(delete)
-            //markers[chapterName].getElement().style.backgroundColor = '#00ff00'; //(green)(D)
-            //activeChapterName = chapterName;(D)
             }   
         
         // Scroll event listener
@@ -380,42 +370,20 @@
             const playButton = document.querySelector(`button[onclick="toggleAudio('${audioSrc}', '${audioId}')"]`);
 
             if (audio.paused) {
-                //pause any active audio before playing a new one(D)
-                //if (activeAudio && activeAudio!== audio){(D)
-                    //activeAudio.pause();(D)
-                    //activeAudio.currentTime = 0;(D)
-                    //const previousPlayButton = document.querySelector(`button[onclick*="${activeAudio.id}"]`);(D)
-                    //if (previousPlayButton) previousPlayButton.textContent = 'play';(D)
-                //}
                 resetActiveAudio();
                 audio.play();
                 playButton.textContent = "Pause";
-                activeAudio = audio; //set the active audio
-                
-                //const textWrapper = playButton.nextElementSibling;(D)
-                //const spans = textWrapper.querySelectorAll(".audio-text");(D)
-
-                //audio.ontimeupdate = () => {(D)
-                    //spans.forEach(span => {(D)
-                        //const start = parseFloat(span.dataset.start);(D)
-                        //const end = parseFloat(span.dataset.end);(D)
-                        //span.classList.toggle("active", audio.currentTime >= start && audio.currentTime <= end);(D)
-                    //});(D)
-                //};(D)
-
-                //audio.onended = () => {(D)
-                    //playButton.textContent = "Play";(D)
-                //};
-                syncAudioWithText(audio, playButton);
+                syncAudioWithText(audio); //set the active audio
             } else {
                 audio.pause();
                 playButton.textContent = "play";
             }
         }
-        function syncAudioWithText(audio, spans) {
-            //const textWrapper = playButton.nextElementSibling;
-            //const spans = textWrapper.querySelectorAll(".audio-text");
 
+        let activeAudio = null
+
+        function syncAudioWithText(audio) {
+            const spans = document.querySelectorAll(".audio-text");
             audio.ontimeupdate = () => {
                 spans.forEach(span => {
                     const start = parseFloat(span.dataset.start);
@@ -426,12 +394,11 @@
 
             audio.onended = () => {
                 spans.forEach(span => span.classList.remove("active"));
-                //playButton.textContent = "Play";(D)
             };
         }
 
-        function createAudioPlayer(feature, language ='es') {
-            const stanzaLines = feature.content.stanzas[language].split('\n');
+        function createAudioPlayer(feature) {
+            const stanzaLines = feature.content.stanzas.es.split('\n');
             const startTimes = [5, 11,17, 23]; // Adjust timing based on your data for the highlight of each line
             const endTimes = [10, 16, 22, 30]; // Adjust timing based on your data for the highlight of each line
 
