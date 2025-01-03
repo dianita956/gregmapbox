@@ -313,25 +313,32 @@
         }, {});
 
         let activeChapterName = data.features[0].id;
-        //let activeAudio=null; //var to track the active audio element
+        let activeAudio=null; //def globally 
 
-        //set active chapter sectiion
+        //set active chapter section
         function setActiveChapter(chapterName) {
             if (chapterName === activeChapterName) return;
 
             resetActiveAudio();
-            map.flyTo(chapters[chapterName]);
-            updateActiveMarker(chapterName);
-            updateActiveSection(chapterName);
-            activeChapterName = (chapterName);
+
+                if (chapters[chapterName]) {
+                    map.flyTo(chapters[chapterName]);
+                } else {
+                    console.error(`Chapter ${chapterName} does not exist.`);
+                    return;
+                }                
+
+                updateActiveMarker(chapterName);
+                updateActiveSection(chapterName);
+                activeChapterName = chapterName;
         }
             //pause and reset the active audio if any
             function resetActiveAudio(){
             if (activeAudio && !activeAudio.paused) {
-                activeAudio.pause();
-                activeAudio.currentTime = 0;
-                const playButton = document.querySelector(`button[onclick*="${activeAudio.id}"]`);
-                if (playButton) playButton.textContent = "play"; //reset button text
+                    activeAudio.pause();
+                    activeAudio.currentTime = 0;
+                    const playButton = document.querySelector(`button[onclick*="${activeAudio.id}"]`);
+                    if (playButton) playButton.textContent = "play"; //reset button text            
             }
         }
             //note: change marker colors
@@ -340,7 +347,7 @@
                 markers[activeChapterName].getElement().style.backgroundColor = '';
             }
             if (markers[chapterName]){
-                markers[activeChapterName].getElement().style.backgroundColor = 'red'; //set previous marker background to red
+                markers[chapterName].getElement().style.backgroundColor = 'red'; //set previous marker background to red
             }
         }            
             // highlist the active section and marker
@@ -353,17 +360,48 @@
         window.onscroll = () => {
             for (const feature of data.features) {
                 if (isElementOnScreen(feature.id)) {
+                    //resetActiveAudio(); //stop any play
                     setActiveChapter(feature.id);
                     break;
                 }
             }
         };
+// Interesect TESTING
+        function handleIntersect(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const featureId = entry.target.id;
+                    if (activeChapterName !== featureId) {
+                        resetActiveAudio();
+                        setActiveChapter(featureId);
+                        activeChapter = featureId;
+                    }
+                }
+            });
+        }
+
+        const observer = new IntersectionObserver(handleIntersect, {
+            threshold: 0.5, // Adjust the threshold as needed
+        });
+        ///
+
+        data.features.forEach(feature => {
+            const element = document.getElementById(feature.id);
+            if (element) observer.observe(element);
+        });
         // Function to check if the section is in the viewport
         function isElementOnScreen(id) {
             const element = document.getElementById(id);
             const bounds = element.getBoundingClientRect();
             return bounds.top < window.innerHeight && bounds.bottom > 0;
             }
+
+            //intersection obserrver to a pause audio when article image is in view
+            function isElementOnScreen(id) {
+    const element = document.getElementById(id);
+    const bounds = element.getBoundingClientRect();
+    return bounds.top < window.innerHeight && bounds.bottom > 0;
+} 
 
         function toggleAudio(audioSrc, audioId) {
             const audio = document.getElementById(audioId);
@@ -373,14 +411,13 @@
                 resetActiveAudio();
                 audio.play();
                 playButton.textContent = "Pause";
+                activeAudio = audio //update activeAudio
                 syncAudioWithText(audio); //set the active audio
             } else {
                 audio.pause();
                 playButton.textContent = "play";
             }
         }
-
-        let activeAudio = null
 
         function syncAudioWithText(audio) {
             const spans = document.querySelectorAll(".audio-text");
