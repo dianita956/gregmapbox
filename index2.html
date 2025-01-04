@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -7,30 +8,48 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.js"></script>
     <style>
-        body { margin: 0; padding: 0; }
-        #map { position: fixed; top: 0; bottom: 0; width: 50%; }
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+        }
+
         #features {
             width: 50%;
             margin-left: 50%;
             font-family: sans-serif;
             background-color: #fafafa;
         }
+
         section {
             padding: 10px;
             border-bottom: 1px solid #ddd;
             font-size: 14px;
         }
-        section.active { 
+
+        section.active {
             background-color: #f0f8ff;
         }
+
         section:last-child {
             margin-bottom: 200px;
         }
+
         .news-image img {
-            width: 100%;  /* Make the image fill the container width */
-            height: auto; /* Maintain aspect ratio */
-            max-width: 50vw;  /* Limit the maximum width of the image */
+            width: 80%;
+            /* Make the image fill the container width */
+            height: auto;
+            /* Maintain aspect ratio */
+            max-width: 50vw;
+            /* Limit the maximum width of the image */
         }
+
         .marker {
             background-image: url('https://docs.mapbox.com/demos/custom-markers-gl-js/mapbox-icon.png');
             background-size: cover;
@@ -38,14 +57,32 @@
             height: 50px;
             cursor: pointer;
         }
+
+        .marker-icon-default {
+            width: 20px;
+            height: 20px;
+            background-color: blue;
+            border-radius: 50%;
+        }
+
+        .marker-icon-active {
+            width: 25px;
+            height: 25px;
+            background-color: #e69f00;
+            border: 2px solid #d55e00;
+            border-radius: 50%;
+        }
+
         .audio-player {
             margin: 10px;
         }
+
         .inline-audio-player {
             display: flex;
             flex-direction: column;
             gap: 5px;
         }
+
         .text-audio-wrapper {
             display: inline;
             align-items: center;
@@ -57,20 +94,24 @@
             font-size: 14px;
             cursor: pointer;
             border-radius: 5px;
-            
+
         }
-         .audio-text {
+
+        .audio-text {
             transition: background-color 0.3s ease;
-            line-height: 1.5; 
+            line-height: 1.5;
         }
 
         .audio-text.active {
-            background-color: rgba(0, 229, 255, 0.729); /* Highlight text */
+            background-color: rgba(0, 229, 255, 0.729);
+            /* Highlight text */
         }
+
         .stanzas {
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             line-height: 1.5;
         }
+
         #reset-map-view {
             background-color: #0074D9;
             color: white;
@@ -87,14 +128,15 @@
         }
     </style>
 </head>
+
 <body>
     <div id="map"></div>
     <div id="features"></div>
     <div class="audio-player"></div>
-    <button id = 'reset-map-view'style="position: fixed; top: 10px; right: 10px; z-index: 1000;">Reset Map View</button>
+    <button id='reset-map-view' style="position: fixed; top: 10px; right: 10px; z-index: 1000;">Reset Map View</button>
 
     <script>
-// Mapbox setup
+        // Mapbox setup
         mapboxgl.accessToken = 'pk.eyJ1IjoiZGlhbml0YTk1NiIsImEiOiJjbTNuamNzam0wdHRrMmxxMW81MHMxMTdpIn0.-1QhN4HjJq36viH82gJUtg'; // Replace with your Mapbox access token
         const map = new mapboxgl.Map({
             container: 'map',
@@ -103,15 +145,7 @@
             zoom: 7
         });
 
-//reset map view
-        document.getElementById('reset-map-view').addEventListener('click', () => {
-                    map.flyTo({
-                        center: [-98.3, 28.5], // Your initial center coordinates
-                        zoom: 7, // Your initial zoom level
-                        essential: true // Ensures smooth animation
-                    });
-                });
-// hard code data
+        // hard code data
         const data = {
             "type": "FeatureCollection",
             "name": "gdf",
@@ -124,7 +158,7 @@
             "features": [
                 {
                     "type": "Feature",
-                    "id": 1,
+                    "id": 0,
                     "properties": {
                         "address": "Karnes County, Texas",
                         "Latitude": 28.8791858,
@@ -132,21 +166,24 @@
                     },
                     "geometry": {
                         "type": "Point",
-                        "coordinates": [-97.9062893, 28.8791858]
+                        "coordinates": [
+                            -97.9062893,
+                            28.8791858
+                        ]
                     },
                     "content": {
-                        "stanzas":{
+                        "stanzas": {
                             "es": "En el condad de Carnes. \nmiren lo que ha sucedido,\nmurió el Cherife Mayor. \nquednado Roman herido",
                             "en": "In the county of Karnes, \nLook what has happened; \nThe Major Sheriff died, \nLeaving Román badly wounded.",
-                         },
-                        "audioFile":"audio/GC 1 Mixdown.mp3",
+                        },
+                        "audioFile": "audio/GC 1 Mixdown.mp3",
                         "articleImg": "articleImg/Cortez_is_in_Bexar_Jail._the_Slayer_of_Sheriffs__San_Antonio_Express_published_as_The_Daily_Express___June_25_1901__p1_4.png",
                         "articleLink": "articleImg/Cortez_is_in_Bexar_Jail._the_Slayer_of_Sheriffs__San_Antonio_Express_published_as_The_Daily_Express___June_25_1901__p1_4.pdf"
                     }
                 },
                 {
                     "type": "Feature",
-                    "id": 2,
+                    "id": 1,
                     "properties": {
                         "address": "Gonzales County, Texas",
                         "Latitude": 29.4436555,
@@ -159,12 +196,12 @@
                             29.4436555
                         ]
                     },
-                    "content":{
-                        "stanzas":{
-                            "es":"Tiró con rumbo a Gonzales \nsin ninguna timidez:\n--Síganme rinches cobardes, \nyo soy Gregorio Cortez.",
+                    "content": {
+                        "stanzas": {
+                            "es": "Tiró con rumbo a Gonzales \nsin ninguna timidez:\n--Síganme rinches cobardes, \nyo soy Gregorio Cortez.",
                             "en": "He struck out for Gonzales \nWithout showing any fear, \n'Follow me, cowardly rangers, \nI am Gregorio Cortez.'",
                         },
-                        "audioFile":"audio/GC 10Mixdown.mp3",
+                        "audioFile": "audio/GC 10Mixdown.mp3",
                         "articleImg": "articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.png",
                         "articleLink": "articleImg/Hot_on_His_Trail__Dallas_Morning_News__June_18_1901__p1.pdf"
 
@@ -172,7 +209,7 @@
                 },
                 {
                     "type": "Feature",
-                    "id": 3,
+                    "id": 2,
                     "properties": {
                         "address": "Belmont, Gonzalez County, Texas",
                         "Latitude": 29.5241066,
@@ -186,19 +223,19 @@
                         ]
                     },
                     "content": {
-                        "stanzas":{
+                        "stanzas": {
                             "es": "Se fue de Belmont al rancho, \nlo alacanzaron a rodear, \npoquitos más de trescientos, \ny allí les brincó el corral.",
                             "en": "From Belmont he went to the ranch,\nThey succeeded in surrounding him, \nQuite a few more than three hundred,\nBut there he jumped their corral.",
                         },
-                        "audioFile":"audio/GC 11 Mixdown.mp3",
+                        "audioFile": "audio/GC 11 Mixdown.mp3",
                         "articleImg": "articleImg/Officers_on_Hot_Trails._Many_Determined_Men_Are_in__San_Antonio_Express_published_as_The_Daily_Express___June_18_1901__p1_2.png",
-                        "articleLink":"articleImg/Officers_on_Hot_Trails._Many_Determined_Men_Are_in__San_Antonio_Express_published_as_The_Daily_Express___June_18_1901__p1_2.pdf"
+                        "articleLink": "articleImg/Officers_on_Hot_Trails._Many_Determined_Men_Are_in__San_Antonio_Express_published_as_The_Daily_Express___June_18_1901__p1_2.pdf"
 
                     }
                 },
                 {
                     "type": "Feature",
-                    "id": 4,
+                    "id": 3,
                     "properties": {
                         "address": "Laredo, Texas",
                         "Latitude": 27.5075005,
@@ -212,19 +249,19 @@
                         ]
                     },
                     "content": {
-                        "stanzas":{
+                        "stanzas": {
                             "es": "Salió Gregorio Cortez, \nsalió con rumbo a Laredo, \nno lo quisieron seguir \nporque le tuvieron miedo.",
                             "en": "Gregorio Cortez went out, \nHe went towards Laredo \nThey decided not to follow \nBecause they were afraid of him.",
                         },
-                        "audioFile":"audio/GC 14Mixdown.mp3",
+                        "audioFile": "audio/GC 14Mixdown.mp3",
                         "articleImg": "articleImg/Cortez_Has_Been_Identified._William_Loueary_and__San_Antonio_Express_published_as_The_Daily_Express___June_24_1901__p1_2.png",
-                        "articleLink":"articleImg/Cortez_Has_Been_Identified._William_Loueary_and__San_Antonio_Express_published_as_The_Daily_Express___June_24_1901__p1_2.pdf"
+                        "articleLink": "articleImg/Cortez_Has_Been_Identified._William_Loueary_and__San_Antonio_Express_published_as_The_Daily_Express___June_24_1901__p1_2.pdf"
 
                     }
                 },
                 {
                     "type": "Feature",
-                    "id": 5,
+                    "id": 4,
                     "properties": {
                         "address": "Encinal, Texas",
                         "Latitude": 28.0406329,
@@ -238,38 +275,38 @@
                         ]
                     },
                     "content": {
-                        "stanzas":{
+                        "stanzas": {
                             "es": "Allá por El Encinal, \nsegún lo que aquí se dice, \nle formaron un corral y les mató otro cherife.",
                             "en": "Over by El Encinal,\nAccording to what we hear, \nThey made him a corral, \n And he killed them another sheriff.",
                         },
-                        "audioFile":"audio/GC 17 Mixdown.mp3",
+                        "audioFile": "audio/GC 17 Mixdown.mp3",
                         "articleImg": "articleImg/Cortez_Eludes_Pursuers_Wily_Fugitive_Seems_to_Have__San_Antonio_Express_published_as_The_Daily_Express___June_22_1901__p1_2.png",
-                        "articleLink":"articleImg/Cortez_Eludes_Pursuers_Wily_Fugitive_Seems_to_Have__San_Antonio_Express_published_as_The_Daily_Express___June_22_1901__p1_2.pdf"
+                        "articleLink": "articleImg/Cortez_Eludes_Pursuers_Wily_Fugitive_Seems_to_Have__San_Antonio_Express_published_as_The_Daily_Express___June_22_1901__p1_2.pdf"
 
                     }
-        }
+                }
             ]
         };
 
-// Create marker on the map
-            //store markers
-            const markers= {};
-            
+        // Create marker on the map
+        //store markers
+        const markers = {};
 
-            //function to create markers
-            function createMarker(feature){
-                const marker = new mapboxgl.Marker({
-                    color: 'black'
-                })
+
+        //function to create markers
+        function createMarker(feature) {
+            const marker = new mapboxgl.Marker({
+                color: 'black'
+            })
                 .setLngLat(feature.geometry.coordinates)
                 .setPopup(new mapboxgl.Popup().setHTML(createPopUpContent(feature)))
-                    .addTo(map);
+                .addTo(map);
 
-                    markers[feature.id] = marker;
-            }
+            markers[feature.id] = marker;
+        }
 
-//Create dynamic scroll content and markers
-        function createPopUpContent(feature){
+        //Create dynamic scroll content and markers
+        function createPopUpContent(feature) {
             return `
             <h3>${feature.properties.address}</h3>
             ${feature.content.audioFile ? createAudioPlayer(feature) : ''}
@@ -278,13 +315,13 @@
         }
 
         data.features.forEach((feature) => {
-            //new: create a marker for each feature
+            //create a marker for each feature
             createMarker(feature);
             createScrollContent(feature);
         });
 
         // create dynamic scroll content for each feature
-        function createScrollContent(feature){
+        function createScrollContent(feature) {
             const { address } = feature.properties;
             const { stanzas, audioFile, articleImg, articleLink } = feature.content;
 
@@ -303,7 +340,7 @@
             document.getElementById('features').appendChild(section);
         }
 
-//Synchronize map with scrolling
+        //Synchronize map with scrolling
         const chapters = data.features.reduce((acc, feature) => {
             acc[feature.id] = {
                 center: feature.geometry.coordinates,
@@ -313,49 +350,60 @@
         }, {});
 
         let activeChapterName = data.features[0].id;
-        let activeAudio=null; //def globally 
+        let activeAudio = null; //def globally 
 
         //set active chapter section
+
+        map.on('scroll', () => {
+            const activeChapter = getActiveChapter(); // Logic to find the active chapter
+            if (activeChapter && activeChapter !== activeChapter) {
+                setActiveChapter(activeChapter)
+            }
+        });
+
         function setActiveChapter(chapterName) {
             if (chapterName === activeChapterName) return;
 
             resetActiveAudio();
 
-                if (chapters[chapterName]) {
-                    map.flyTo(chapters[chapterName]);
-                } else {
-                    console.error(`Chapter ${chapterName} does not exist.`);
-                    return;
-                }                
+            if (chapters[chapterName]) {
+                map.flyTo(chapters[chapterName]);
+            } else {
+                console.error(`Chapter ${chapterName} does not exist.`);
+                return;
+            }
 
-                updateActiveMarker(chapterName);
-                updateActiveSection(chapterName);
-                activeChapterName = chapterName;
+            updateActiveMarker(chapterName);
+            updateActiveSection(chapterName);
         }
-            //pause and reset the active audio if any
-            function resetActiveAudio(){
+
+
+        //pause and reset the active audio if any
+        function resetActiveAudio() {
             if (activeAudio && !activeAudio.paused) {
-                    activeAudio.pause();
-                    activeAudio.currentTime = 0;
-                    const playButton = document.querySelector(`button[onclick*="${activeAudio.id}"]`);
-                    if (playButton) playButton.textContent = "play"; //reset button text            
+                activeAudio.pause();
+                activeAudio.currentTime = 0;
+                const playButton = document.querySelector(`button[onclick*="${activeAudio.id}"]`);
+                if (playButton) playButton.textContent = "play"; //reset button text            
             }
         }
-            //note: change marker colors
-        function updateActiveMarker(chapterName){
+        //note: change marker colors
+        function updateActiveMarker(chapterName) {
             if (markers[activeChapterName]) {
-                markers[activeChapterName].getElement().style.backgroundColor = '';
+                markers[activeChapterName].getElement().innerHTML = '<div class="marker-icon-default"></div>';
             }
-            if (markers[chapterName]){
-                markers[chapterName].getElement().style.backgroundColor = 'red'; //set previous marker background to red
+            if (markers[chapterName]) {
+                markers[chapterName].getElement().innerHTML = '<div class="marker-icon-active"></div>'; //set previous marker background to red
             }
-        }            
-            // highlist the active section and marker
-        function updateActiveSection(chapterName){
+
+            activeChapterName = chapterName;
+        }
+        // highlist the active section and marker
+        function updateActiveSection(chapterName) {
             document.getElementById(chapterName).classList.add('active');
             document.getElementById(activeChapterName).classList.remove('active');
-            }   
-        
+        };
+
         // Scroll event listener
         window.onscroll = () => {
             for (const feature of data.features) {
@@ -366,19 +414,19 @@
                 }
             }
         };
-// Interesect TESTING
+        // Interesect TESTING
         function handleIntersect(entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const featureId = entry.target.id;
                     if (activeChapterName !== featureId) {
-                        resetActiveAudio();
+                        //resetActiveAudio();
                         setActiveChapter(featureId);
                         activeChapter = featureId;
                     }
                 }
             });
-        }
+        };
 
         const observer = new IntersectionObserver(handleIntersect, {
             threshold: 0.5, // Adjust the threshold as needed
@@ -394,21 +442,21 @@
             const element = document.getElementById(id);
             const bounds = element.getBoundingClientRect();
             return bounds.top < window.innerHeight && bounds.bottom > 0;
-            }
+        };
 
-            //intersection obserrver to a pause audio when article image is in view
-            function isElementOnScreen(id) {
-    const element = document.getElementById(id);
-    const bounds = element.getBoundingClientRect();
-    return bounds.top < window.innerHeight && bounds.bottom > 0;
-} 
+        //intersection obserrver to a pause audio when article image is in view
+        function isElementOnScreen(id) {
+            const element = document.getElementById(id);
+            const bounds = element.getBoundingClientRect();
+            return bounds.top < window.innerHeight && bounds.bottom > 0;
+        };
 
         function toggleAudio(audioSrc, audioId) {
             const audio = document.getElementById(audioId);
             const playButton = document.querySelector(`button[onclick="toggleAudio('${audioSrc}', '${audioId}')"]`);
 
             if (audio.paused) {
-                resetActiveAudio();
+                //resetActiveAudio();
                 audio.play();
                 playButton.textContent = "Pause";
                 activeAudio = audio //update activeAudio
@@ -417,7 +465,7 @@
                 audio.pause();
                 playButton.textContent = "play";
             }
-        }
+        };
 
         function syncAudioWithText(audio) {
             const spans = document.querySelectorAll(".audio-text");
@@ -432,11 +480,11 @@
             audio.onended = () => {
                 spans.forEach(span => span.classList.remove("active"));
             };
-        }
+        };
 
         function createAudioPlayer(feature) {
             const stanzaLines = feature.content.stanzas.es.split('\n');
-            const startTimes = [5, 11,17, 23]; // Adjust timing based on your data for the highlight of each line
+            const startTimes = [5, 11, 17, 23]; // Adjust timing based on your data for the highlight of each line
             const endTimes = [10, 16, 22, 30]; // Adjust timing based on your data for the highlight of each line
 
             let stanzaSpans = '';
@@ -457,7 +505,18 @@
                     <audio id="popup-audio-${feature.id}" src="${feature.content.audioFile}" hidden></audio>
                 </div>
             `;
-        }
+        };
+         //reset map view
+         document.getElementById('reset-map-view').addEventListener('click', () => {
+            const firstFeature = data.features[1];
+            const [lng,lat] = firstFeature.geometry.coordinates;
+
+            map.flyTo({
+                center: [lng, lat], // Your initial center coordinates
+                zoom: 7, // Your initial zoom level
+                essential: true // Ensures smooth animation
+            });
+        });
     </script>
 </body>
 </html>
