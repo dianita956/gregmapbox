@@ -1,92 +1,21 @@
-<!-- Diane Lopez, 11/18/2024, P3 Map -->
-<!DOCTYPE html>  
+<!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8">
-    <title>Display a map on a webpage</title>
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mapping: El Corrido de Gregorio Cortez</title>
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.css" rel="stylesheet">
-    <link rel="stylesheet" href="main.css">
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.js"></script>
-    
-    <style>
-        body { margin: 0; padding: 0; font-family: sans-serif; }
-        #map { position: absolute; top: 0; bottom: 0; width: 100%;}
-        #features {
-            width: 25%;
-            margin-left: 25%;
-            font-family: sans-serif;
-            overflow-y: scroll;
-            background-color: #fafafa;
-        }
-        section {
-            padding: 25px 50px;
-            line-height: 25px;
-            border-bottom: 1px solid #ddd;
-            opacity: 0.25;
-            font-size: 13px;
-        }
-        section.active {
-            opacity: 1;
-        }
-        section:last-child {
-            border-bottom: none;
-            margin-bottom: 200px;
-        }
-        *.map-popup{ font-size: 14px; line-height: 1.5;} /* NEW add map popup */ 
-</style>
+    <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
-<div id="map"></div>
-<div id="features"></div>
+    <div id="map"></div>
+    <div id="features"></div>
+    <div class="audio-player"></div>
+    <button id='reset-map-view' style="position: fixed; top: 10px; right: 10px; z-index: 1000;">Reset Map View</button>
 
-<script src="data.js"></script>
-<script>
-    // TO MAKE THE MAP APPEAR YOU MUST
-	// ADD YOUR ACCESS TOKEN FROM
-	// https://account.mapbox.com
-
-    //const map = new mapboxgl.Map({
-       //container: 'map', // container ID
-        //center: [-98.5, 28.5], // starting position [lng, lat]. Note that lat must be set between -90 and 90
-        //zoom: 7 // starting zoom
-    //});
-
-    // map.on('load', () => {
-    //     console.log(data.features)
-    //     data.features.forEach(feature => {
-    //         //console.log(feature.properties.Latitude)
-    //         //console.log(feature.properties.Longitude)
-    //         const lat = feature.properties.Latitude;
-    //         const long = feature.properties.Longitude;
-    //         const address = feature.properties.address;
-    //         const stanza = feature.content.stanza;
-    //         const articleImg = feature.content.articleImg;
-    //         const articleLink = feature.content.articleLink;
-
-    //         const marker = new mapboxgl.Marker()
-    //             .setLngLat([long,lat])  
-    //             .setPopup(new mapboxgl.Popup().setHTML(`
-    //                 <h1>${address}</h1>
-    //                 <p>${stanza}</p>   
-    //                 <p>
-    //                     <a href="${articleLink}" target="_blank">Read full article</a>
-    //                 </p>
-    //                 <div class="news-image">
-    //                     <img src="${articleImg}" alt="Article Image"></img>
-    //                 </div>
-                                 
-    //             `))
-    //             .addTo(map);  
-    //         const markerEl = marker.getElement();
-    //         markerEl.dataset.id = feature.id;
-    //         console.log(markerEl)
-    //     });
-    
-    
-    //});
-</script>
-<script src="index.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>
-

@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#map {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+}
+
+#features {
+    width: 50%;
+    margin-left: 50%;
+    font-family: sans-serif;
+    background-color: #fafafa;
+}
+
+section {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+}
+
+section.active {
+    background-color: #f0f8ff;
+}
+
+section:last-child {
+    margin-bottom: 200px;
+}
+
+.news-image img {
+    width: 80%;
+    /* Make the image fill the container width */
+    height: auto;
+    /* Maintain aspect ratio */
+    max-width: 50vw;
+    /* Limit the maximum width of the image */
+}
+
+.marker {
+    background-image: url('https://docs.mapbox.com/demos/custom-markers-gl-js/mapbox-icon.png');
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.marker-icon-default {
+    width: 20px;
+    height: 20px;
+    background-color: blue;
+    border-radius: 50%;
+}
+
+.marker-icon-active {
+    width: 25px;
+    height: 25px;
+    background-color: #e69f00;
+    border: 2px solid #d55e00;
+    border-radius: 50%;
+}
+
+.audio-player {
+    margin: 10px;
+}
+
+.inline-audio-player {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.text-audio-wrapper {
+    display: inline;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.play-btn {
+    padding: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+
+.audio-text {
+    transition: background-color 0.3s ease;
+    line-height: 1.5;
+}
+
+.audio-text.active {
+    background-color: rgba(0, 229, 255, 0.729);
+    /* Highlight text */
+}
+
+.stanzas {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    line-height: 1.5;
+}
+
+#reset-map-view {
+    background-color: #0074D9;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#reset-map-view:hover {
+    background-color: #0056A3;
+}
